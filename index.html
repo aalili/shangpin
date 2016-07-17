@@ -1,0 +1,1687 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scale=no">
+
+<title>宅配尚品</title>
+<link rel="stylesheet" type="text/css" href="css/zhaipei.css">
+<link rel="stylesheet" type="text/css" href="css/header.css">
+<link rel="stylesheet" type="text/css" href="css/footer-aside.css">
+<link rel="icon" href="img/icon.ico">
+
+<style>
+/*图片滚动区域*/
+
+#top-tap{width:100%;height:450px;position:relative;*border-top:2px solid red;}
+.tap{position:relative;width:100%;}
+.tap-content-a{display:none;}
+.tap-content .active{display:block;}
+.tap-list{position:absolute;left:45%;bottom:14px;width:306px;height:6px;padding:6px 8px;}
+.tap-list li:hover{cursor:pointer;}
+.tap-list-li{width:34px;height:4px;background-color:rgba(255,255,255,0.8);margin-right:7px;float:left;*background-color:#ccc;background-color:#ccc\9;}
+.tap-list-li:hover{background-color:#990000;}
+.tap-list .show{background-color:#990000;}
+.tap-to-first{width:40px;height:14px;background:url(img/refresh.png) no-repeat;float:left;margin-top:-6px;}
+
+/*表单区域*/
+#form{position:relative;}
+#form-content{width:170px;padding:10px;float:right;margin-top:-450px;background-color:#fff;}
+.savemoney{color:red;padding-bottom:10px;*font-size:12px;}
+#form-content input{padding:4px;}
+#form-content input:nth-child(2){margin-top:10px;}
+#phone{margin-top:10px;}
+#form-content select{padding:3px 6px;margin-top:10px;}
+#form-content button{width:160px;height:45px;background-color:#cc0033;border:none;border-radius:4px;;color:#fff;font-size:22px;font-weight:bold;margin:10px 4px 10px 4px;*font-size:20px;}
+#form-content .error{color:red;text-align:center;padding-top:3px;display:none;}
+
+#form-content-scroll{padding-top:10px;}
+#form-content-scroll h3{text-align:center;padding:5px 1px;*font-size:15px;}
+#form-content-scroll strong{color:red;}
+.scroll{border-top:1px solid #ccc;padding:0 10px;height:80px;overflow:hidden;position:relative;}
+.scroll li:before{border-width:4px;display:block;margin-left:-6px;margin-top:4px;content:"";display:block;position:absolute;border-style:dashed dashed dashed solid;
+border-color:transparent transparent transparent #cc0000;}
+.scroll-content{position:relative;padding:2px 0;overflow:hidden;*left:20px;}
+.scroll-content:hover{cursor:pointer;}
+.scroll-content h4{color:#000;*font-size:12px;}
+.scroll-content time{margin-right:20px;}
+.scroll-content p{color:#999;}
+
+#form-content-bottom{background:url(img/louceng.png) no-repeat;}
+#form-content-bottom span{display:inline-block;text-indent:3em;line-height:24px;padding-right:15px;*display:inline;*zoom:1;*padding-right:0;*text-indent:1em;}
+#form-content-bottom em{color:#000;font-size:13px;}
+
+/*流程定制区域*/
+
+#steps{padding:36px 0;}
+#steps-list li{float:left;padding:10px 36px;background-color:#f7f7f7;}
+#steps-list li:first-child {border-right:1px solid #ccc;display:block;}
+
+/*推荐区域*/
+#suggest{position:relative;}
+.suggest-left{width:220px;height:306px;border:1px solid #ccc;background-color:#f7f7f7;}
+#suggest .title{float:left;width:110px;height:32px;text-align:center;line-height:32px;border-bottom:2px solid red;}
+#suggest .title:hover{*background-color:#ccc;}
+#suggest .title:nth-child(2){width:109px;border-left:1px solid #ccc;}
+#suggest .title:before{border-width:0;display:block;margin-left:50px;margin-top:32px;content:"";display:block;position:absolute;border-style:solid dashed dashed dashed ;
+border-color:#cc0000 transparent transparent transparent ;}
+#suggest .activeT:before{border-width:5px;}
+.suggest-tap{float:left;width:100%;display:inline-block;position:relative;*display:inline;*zoom:1;}
+#suggest .suggest-tap-content{padding:10px 20px;display:none;margin-top:10px;margin-top:30px;}
+#suggest .active{display:block;}
+#suggest .suggest-tap-content:last-child li{margin-top:5px;}
+.suggest-tap .active p{width:180px;}
+.suggest-tap .active p a{color:#000;}
+.suggest-tap .active .house-title{display:inline-block;padding-right:50px;*display:inline;*zoom:1;}
+.suggest-tap .active ul{padding-bottom:10px;}
+.suggest-tap .active ul li{width:180px;margin-top:2px;}
+.suggest-tap .active ul a{display:inline-block;width:100%;white-space:nowrap; overflow:hidden; text-overflow:ellipsis;*display:inline;*zoom:1;*height:16px;}
+.suggest-tap .house-name{display:inline-block;width:144px;*display:inline;*zoom:1;}
+.suggest-tap .suggest-tap-list-icon{display:inline-block;background:url(img/see.png) no-repeat;width:11px;height:7px;*display:inline;*zoom:1;}
+
+.suggest-tap .more{display:inline-block;*display:inline;*zoom:1;}
+
+
+.suggest-list{position:relative;}
+.suggest-list li{position:relative;float:left;margin-left:8px;
+transition:0.4s;
+-webkit-transition:0.4s;
+-0-transition:0.4s;
+-moz-transition:0.4s;}
+.suggest-list .active{margin-top:-20px;-webkit-box-shadow:4px 2px 20px 2px #ccc,-4px -2px 20px 2px #ccc;
+box-shadow:4px 2px 20px 2px #ccc,-4px -2px 20px 2px #ccc;
+-o-box-shadow:4px 2px 20px 2px #ccc,-4px -2px 20px 2px #ccc;
+-moz-box-shadow:4px 2px 20px 2px #ccc,-4px -2px 20px 2px #ccc;
+}
+
+/*主题内容区域*/
+.fl-section{position:relative;margin-top:36px;}
+.fl-section-top{border-bottom:2px solid red;width:100%;height:23px;padding:10px 0 5px;}
+.fl-section-top img{}
+.fl-section-list{}
+.fl-section-list li{float:left;padding:0 12px;border-right:1px solid #ccc;}
+.fl-section-list li:last-child{border:none;}
+
+.fl-section-content{width:100%;position:relative;padding-top:10px;}
+.fl-section-content-left{position:relative;width:18%;height:592px;}
+.fl-section-content-right{position:relative;width:81%;height:592px;}
+.fl-section-content-right-top{width:100%;height:364px;}
+.content-right-top-big{width:662px;height:362px;}
+.content-right-top-small{width:308px;height:362px;}
+.fl-section-content-right-bottom{width:100%;height:220px;padding-top:10px;}
+.fl-section-content-right-bottom li{float:left;margin-right:8px;*margin-right:6px;}
+.fl-section-content-right-bottom li:last-child{float:right;margin-right:0;}
+.fl-section-content-right-bottom .last-li-img{float:right;margin-right:0;}
+.fl-section-content-right-bottom li img{}
+
+
+/*热销定制内容区域*/
+#function-work{}
+#function-work .fl-section-content-left ul{width:210;height:572px;position:relative;padding:10px 5px;background:url(img/fl//fl1/zhouxun.png) right bottom no-repeat;background-color:#ededed;}
+#function-work .fl-section-content-left li{position:relative;float:left;padding-left:7px;margin-top:8px;border-radius:50%;}
+#function-work .fl-section-content-left li a{display:block;width:62px;height:62px;background-color:#fff;text-align:center;line-height:62px;border-radius:50%;}
+#function-work .fl-section-content-left li .active{color:red;}
+#function-work .fl-section-content-left li a:hover{background-color:red;color:#fff;}
+
+/*潮流风格内容区域*/
+#wave-make .fl-section-content-left-top{width:220px;height:424px;margin-bottom:10px;}
+#wave-make .fl-section-content-left-bottom{width:220px;height:160px;background-color:#ffcc00;}
+.content-left-bottom-title{border-bottom:2px solid #facf68;padding:14px;}
+.content-left-bottom-title h3{display:inline-block;float:left;color:#fff;*display:inline;*zoom:1;}
+.content-left-bottom-title a{display:inline-block;float:right;color:#fff;*display:inline;*zoom:1;}
+
+#wave-make .fl-section-content-left-bottom ul{padding:10px 0 20px 10px;}
+#wave-make .fl-section-content-left-bottom li{margin-bottom:14px;}
+#wave-make .fl-section-content-left-bottom .section-content-icon{display:inline-block;width:9px;height:9px;background:url(img/fl/fl2/xuetang.png) no-repeat;margin-right:4px;*display:inline;*zoom:1;}
+#wave-make .fl-section-content-left-bottom li a{font-size:14px;color:#fff;}
+#wave-make .fl-section-content-left-bottom li a:hover{color:#990000}
+
+/*潮流风格选项卡内容区域*/
+#wave-make .fl-section-content-right{position:relative;}
+#wave-make .tap{position:relative;}
+#wave-make .tap-list{top:90%;left:40%;width:100px;height:12px;padding:3px 6px;background-color:rgba(204,204,204,0.4);border-radius:12px;}
+#wave-make .tap-list li{width:10px;height:10px;margin:0 6px;border-radius:50%;}
+/*版块内部详细内容内容区域*/
+
+.detail{padding:26px 16px;width:274px;height:312px;background-color:#f5f5f5;position:relative;}
+.right-top-small-1{width:100%;height:135px;position:relative;color:#666;}
+.right-top-small-1:first-child{padding-bottom:22px;border-bottom:1px solid #ccc;}
+.right-top-small-1:last-child{padding-top:22px;}
+.top-small-img{float:left;}
+.right-top-small-detail{float:right;width:130px;}
+.right-top-small-detail h3{font-size:14px;padding:0 5px;}
+.right-top-small-detail p{font-size:12px;line-height:20px;padding:20px 5px;}
+.right-top-small-detail a{display:inline-block;background-color:#ccc;color:#fff;padding:0 4px;*display:inline;*zoom:1;}
+.right-top-small-detail a:hover{color:red;}
+
+/*热门定制内容区域*/
+#hot-make .fl-section-content-left{width:220px;}
+#hot-make .fl-section-content-left-bottom{margin-top:10px;}
+#hot-make .fl-section-content-right-bottom{width:67.7%;}
+#hot-make .detail{position:absolute;right:0;height:596px;padding-top:0;padding-bottom:0;}
+#hot-make .right-top-small-1{padding:22px 0;height:156px;border-bottom:1px solid #ccc;}
+#hot-make .right-top-small-1:last-child{padding:19px 0;height:160px;border-bottom:none;}
+#hot-make .right-top-small-detail p{font-size:12px;line-height:20px;padding:10px 5px;}
+
+#hot-make .right-top-small-1 .detail-people{padding-top:10px;float:left;}
+#hot-make .detail-people strong{color:red;}
+
+/*百变定制内容区域*/
+#change-make .fl-section-content-left-top{width:200px;height:250px;padding:20px 6px;background-color:#ededed;margin-bottom:10px;}
+#change-make .fl-section-content-left-top h3{font-size:16px;}
+#change-make .fl-section-content-left-top p{padding-top:10px;}
+#change-make .fl-section-content-left-list li{float:left;margin:10px 8px 2px 0;*display:inline;*zoom:1;*float:none;}
+#change-make .fl-section-content-left-list li:nth-child(even){margin-right:0;}
+#change-make .fl-section-content-left-list .even{margin-right:0;}
+#change-make .fl-section-content-left-list li img{width:94px;height:96px;}
+#change-make .fl-section-content-left-list li .active{border:1px solid red;background-color:red;}
+
+#change-make .fl-section-content-right{width:977px;}
+#change-make .content-right-big{width:662px;height:596px;}
+
+#change-make .content-right-big li{margin-bottom:10px;margin-right:10px;float:left;}
+#change-make .content-right-big li:nth-child(2){margin-right:0;float:left;}
+#change-make .content-right-big .second{margin-right:0;float:left;}
+#change-make .content-right-big li:nth-child(3){margin-bottom:0;margin-right:10px;float:left;}
+#change-make .content-right-big .third{margin-bottom:0;margin-right:10px;float:left;}
+#change-make .content-right-big li:nth-child(4){margin-bottom:0;margin-right:0;float:left;}
+#change-make .content-right-big .last{margin-bottom:0;margin-right:0;float:left;}
+
+#change-make .content-right-small{width:306px;height:100%;position:relative;}
+#change-make .content-right-small .tap{position:relative;width:306px;height:366px;}
+#change-make .tap-list{left:135px;width:38px;border-radius:10px;height:10px;padding:5px 10px;}
+#change-make .tap-list li{width:10px;height:10px;border-radius:50%;margin-right:14px;}
+#change-make .tap-list li:last-child{margin:0;}
+#change-make .change-make-detail{margin-top:10px;background-color:#f2f2f2;padding:5px;height:210px;}
+#change-make .change-make-detail h3{background-color:#f2f2f2;padding:5px 0 10px 14px;border-bottom:1px solid #ccc;}
+#change-make .change-make-list{padding:14px 0 0 24px;}
+#change-make .change-make-list li{line-height:28px;}
+
+#change-make .change-make-detail-button{float:right;margin-right:20px;}
+#change-make .change-make-detail-button span{display:inline-block;border:1px solid #b3b3b3;width:16px;height:16px;text-align:center;line-height:16px;font-size:16px;*display:inline;*zoom:1;}
+#change-make .change-make-detail-button span:hover{cursor:pointer;}
+#change-make .change-make-detail-button .active{border-color:#d6d6d6;color:#d6d6d6;}
+
+/*全屋定制内容区域*/
+#house-make .content-left-top{border:1px solid #ccc;}
+#house-make .content-left-top-detail{padding:10px;}
+#house-make .content-left-top-detail h3{font-size:15px;}
+#house-make .content-left-top-detail p{padding:8px 0;}
+#house-make .content-left-top-detail .price{font-size:14px;padding:0;}
+#house-make .content-left-top-detail strong{font-size:14px;color:red;}
+
+#house-make .content-left-bottom{margin-top:10px;border:1px solid #ccc;}
+#house-make .content-left-bottom h3{padding:12px;border-bottom:1px solid #ccc;}
+#house-make .content-left-bottom-list {padding:16px 0;}
+#house-make .content-left-bottom-list li{margin-bottom:16px;padding:0 16px;position:relative;}
+#house-make .content-left-bottom-list a{display:inline-block;height:28px;width:100%;*display:inline;*zoom:1;}
+#house-make .content-left-bottom-list img{width:28px;float:left;margin-right:5px;}
+#house-make .bottom-list-title{line-height:14px;}
+#house-make .bottom-list-time{float:right;display:inline-block;position:absolute;bottom:-6px;right:10px;*display:inline;*zoom:1;}
+
+/*设计团队区域*/
+
+#designer{margin-top:36px;}
+#designer .fl-section-content{height:426px;}
+#designer .fl-section-content-left{height:426px;}
+#designer .fl-section-content-right{height:414px;}
+#designer .fl-section-content-right-design{position:relative;width:715px;}
+#designer .fl-section-content-right-design li{float:left;margin-right:10px;margin-bottom:10px;}
+#designer .fl-section-content-right-design li:nth-child(5n+5){margin-right:0;margin-bottom:10px;}
+#designer .fl-section-content-right-design .five{margin-right:0;margin-bottom:10px;}
+
+#designer .fl-section-content-right-chat{margin-left:10px;width:242px;height:100%;padding:5px;background-color:#f2f2f2;}
+#designer .fl-section-content-right-chat h3{padding:10px;font-size:15px;border-bottom:1px solid #ccc;}
+
+#designer .right-chat-list li{border-top:1px solid #ccc;}
+#designer .right-chat-list .question a{display:block;width:222px;height:90px;padding:15px 12px 20px 0;}
+#designer .right-chat-list .question img{width:120px;height:90px;}
+#designer .right-chat-list .name-description{width:98px;height:88px;float:right;overflow:hidden;}
+#designer .right-chat-list .name-description .name{padding-top:10px;}
+#designer .right-chat-list .name-description .description{padding-top:10px;}
+#designer .queation-detail {width:222px;height:61px;padding:15px 12px 20px 0;}
+#designer .queation-detail h4{padding-left:10px;}
+#designer .queation-detail h4 img{margin-right:1em;}
+#designer .queation-detail p{padding:10px 6px;}
+
+#designer .answer {padding:15px 12px 14px 0;}
+#designer .answer h4{padding-left:10px;}
+#designer .answer h4 img{margin-right:1em;}
+#designer .answer  a{display:block;width:100%;padding:10px;}
+#designer .answer .name-description{width:160px;height:57px;}
+#designer .answer .name-description .name{padding:0;color:#000;}
+#designer .answer .name-description .description{overflow:hidden;height:34px;padding:0;}
+#designer .answer .zan{float:right;right:10px;line-height:20px;}
+#designer .answer .zan:hover{cursor:pointer;}
+#designer .answer .zan i{display:inline-block;width:20px;height:20px;background:url(img/fl/fl6/zan1.png) no-repeat;line-height:20px;*display:inline;*zoom:1;}
+
+
+/*会员活动区域*/
+#activity{margin-top:36px;}
+#activity .list-content{width:1208px;overflow:hidden;border:1px solid #ccc;height:276px;position:relative;overflow:hidden;}
+#activity .activity-tap-list{height:154px;padding-top:36px;position:relative;padding:60px 6px;width:2760px;overflow:hidden;*height:100px;}
+#activity .activity-tap-list li{float:left;padding:0 9px;position:relative;text-align:center;transition:0.6s;-webkit-transition:0.6s;
+-0-transition:0.6s;
+-moz-transition:0.6s;}
+#activity .activity-tap-list .active{margin:1px;position:relative;text-align:center;width:300px;height:200px;padding:0;top:-25px;*margin-left:-30px;*margin-right:60px;*padding-right:10px;}
+#activity .activity-tap-list .active span{display:block;width:290px;bottom:14px;color:#fff;position:absolute;z-index: 100;text-align:center;*text-align:left;}
+#activity .activity-tap-list .active img{width:300px;height:200px;}
+#activity .activity-tap-list li:last-child{margin-right:0;}
+#activity .activity-tap-list a{width:205px;height:152px;position:relative;display:block;}
+#activity .activity-tap-list img{width:205px;height:152px;transition:0.6s;-webkit-transition:0.6s;
+-0-transition:0.6s;
+-moz-transition:0.6s;}
+#activity .activity-tap-list li span{display:block;width:230px;bottom: 14px;color: #fff;position: absolute;z-index: 100;text-align: center;*text-align:left;}
+
+#activity .button {width:50px;height:50px;border-radius:50%;background-color:#ccc;text-align:center;font-size:40px;line-height:50px;color:#fff;position:absolute;z-index:200;top:120px;}
+#activity .button:hover{cursor:pointer;}
+#activity .left{left:20px;}
+#activity .right{right:20px;}
+
+
+/*底部会员展示区域*/
+
+#bottom-floor{margin-top:36px;}
+#bottom-floor .tap-card{padding:10px 20px;width:680px ;height:408px;border:1px solid #ccc;}
+#tap-card-top{padding:10px 0;width:680px ;border-bottom:1px dashed #ccc;position:relative;}
+#tap-card-top h3{font-size:15px;float:left;font-weight:bold;color:#000;}
+#tap-card-top .list{float:right;}
+#tap-card-top .list ul{float:left;}
+#tap-card-top .list ul li{float:left;width:18px;height:18px;margin-left:10px;border:1px solid #c6c6c6;}
+#tap-card-top .list a{display:block;width:18px;height:18px;background-color:;text-align:center;}
+#tap-card-top .list a:hover{background-color:#ff9900;}
+#tap-card-top .list .active{background-color:#ff9900;color:#fff;}
+#tap-card-top .list .more{display:block;float:right;width:100px;}
+#tap-card-top .list .more:hover{background-color:#fff;}
+
+#tap-card-bottom{padding-top:16px;}
+
+#tap-card-bottom .card-bottom-left{width:442px;}
+#tap-card-bottom .share-detail{display:block;width:100%;height:74px;padding-top:6px;position:relative;}
+#tap-card-bottom .share-detail:hover{color:#666;}
+#tap-card-bottom .love{position:relative;text-align:center;height:20px;width:80px;background:url(img/fl/fl8/like_ico.jpg) 2px 2px no-repeat;text-indent:26px;display:block;}
+#tap-card-bottom .love:hover{color:#666;cursor:pointer;}
+#tap-card-bottom .love-red{background:url(img/fl/fl8/like_ico_red.jpg) 2px 2px no-repeat;color:red;}
+#tap-card-bottom .share-say{position:relative;width:340px;display:block;}
+#tap-card-bottom .share-say:hover{color:#666;}
+#tap-card-bottom .sayer{text-align:right;padding-bottom:10px;display:block;}
+
+#tap-card-bottom .bottom-right-small:last-child{margin-top:18px;}
+
+#bottom-floor .bottom-floor-list{width:474px;height:428px;}
+#bottom-floor .bottom-floor-content-list{width:230px;height:200px;border:1px solid #dcdddd;padding-top:8px;margin-right:10px;margin-bottom:10px;}
+#bottom-floor .to-right{margin-right:0;}
+#bottom-floor .list-title{font-size:14px;font-weight:bold;padding:9px;line-height:32px;color:#000;border-bottom:1px solid #ff9900;}
+#bottom-floor .floor-list{padding:13px 0 0 10px;}
+#bottom-floor .floor-list li{height:25px;position:relative;padding-left:10px;}
+#bottom-floor .number-one li{padding-left:27px;background:url(img/fl/fl8/num.jpg) no-repeat;}
+#bottom-floor .number-one li:nth-child(2){background-position: 0 -26px ;}
+#bottom-floor .number-one .second{background-position: 0 -26px ;}
+#bottom-floor .number-one li:nth-child(3){background-position: 0 -54px ;}
+#bottom-floor .number-one .third{background-position: 0 -54px ;}
+#bottom-floor .number-one li:nth-child(4){background-position: 0 -81px ;}
+#bottom-floor .number-one .forth{background-position: 0 -81px ;}
+#bottom-floor .number-one li:nth-child(5){background-position: 0 -108px ;}
+#bottom-floor .number-one .fivth{background-position: 0 -108px ;}
+
+
+#bottom-floor .number-two li:before{border-style:dashed dashed dashed solid;border-width:4px;border-color:transparent transparent transparent red;
+content:'';position:absolute;display:block;left:0px;top:6px;}
+
+#bottom-floor .number-bottom li{list-style:disc;margin-left:10px;padding-left:0;*margin-left:0;}
+
+</style>
+
+</head>
+<body>
+<header id="header" class="clearfix">
+	<!--首页广告区域-->
+	<div id="top-ad">
+    	<a href="#"  title="首页活动" target="_blank">
+        	<img src="img/index_top_ad.jpg" alt="首页活动">
+        </a>
+    </div>
+    <div id="header-content" class="container clearfix">
+    	<div class="container clearfix">
+        	<div id="top-banner-content" class="fr clearfix">
+                <span class="fl">您好，欢迎来到新居网 ！</span>
+                <div id="login" class="fl">
+                    <span><a href="#" target="_blank">登录</a></span>|<span><a href="#" target="_blank">注册</a></span>
+                </div>
+                <ul id="top-list" class="fl">
+                    <li><a href="#" target="_blank">我的关注</a></li>
+                    <li><a href="#" target="_blank">近期浏览方案</a></li>
+                    <li id="help"><a id="help-a" href="#" target="_blank">帮助中心</a>
+                    	<ul id="help-list">
+                        	<li><a href="#" target="_blank">服务流程</a></li>
+                            <li><a href="#" target="_blank">常见问题</a></li>
+                            <li><a href="#" target="_blank">在线帮助</a></li>
+                            <li><a href="#" target="_blank">关于我们</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" target="_blank"><i class="list-i phone"></i>手机商城</a></li>
+                    <li id="onfouse"><a href="#" target="_blank"><i class="list-i focus"></i>关注<span class="list-i i-down"></span></a>
+                    	<div id="focus-block" class="hidden">
+                        	<div id="weibo" class="focus-block">
+                            	<a href="#" target="_blank">
+                            		<img src="img/focus_weibo.jpg" alt="新浪微博"/>
+                            	</a>
+                            </div>
+                            <div id="weixin" class="focus-block">
+                            	<a href="#" target="_blank">
+                            		<img src="img/focus_weixin.jpg" alt="微信"/>
+                            	</a>
+                            </div>
+                        </div>
+                    
+                    </li>
+                    <li><a href="#" target="_blank"><i class="list-i phone2"></i>400-880-9985</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="header-search" class="container clearfix">
+        	<div id="header-search-logo" class="fl">
+            	<a href="#" title="新居网" target="_blank"></a>
+            </div>
+            <div id="header-search-ad" class="fl">
+            	<a href="#" title="伴你童行" target="_blank"></a>
+            </div>
+            <div id="header-search-search" class="fl">
+            	<input id="header-search-input" type="text"/>
+                <div id="header-search-scroll">
+                	<p class="first-p">玄关鞋柜怎么设计好？</p>
+                    <p >买的床好还是定做的好？</p>
+                    <p >儿童床选购有什么讲究?</p>
+                </div>
+                <div id="drop-down">
+                	<a  id="drop-down-button" href="#"></a>
+                    <ul id="drop-down-list">
+                    	<li><a href="#" target="_blank">客厅的沙发尺寸多大合适？</a></li>
+                        <li><a href="#" target="_blank">一般卧房的房门尺寸是多少为标准？</a></li>
+                        <li><a href="#" target="_blank">如何选择床头的方向，床的摆放位置？</a></li>
+                        <li><a href="#" target="_blank">进门玄关风水有什么讲究吗？</a></li>
+                        <li><a href="#" target="_blank">电视背景墙如何配色比较好看？</a></li>
+                    </ul>
+                </div>
+                <input id ="header-search-submit" type="submit" value=""/>
+                <ul id="search-bottom-list">
+                	<li><a href="#" target="_blank">家具智造</a></li>
+                    <li><a href="#" target="_blank">榻榻米</a></li>
+                    <li><a href="#" target="_blank">衣柜</a></li>
+                    <li><a href="#" target="_blank">电视柜</a></li>
+                    <li><a href="#" target="_blank">飘窗利用</a></li>
+                    <li><a href="#" target="_blank">儿童房</a></li>
+                    <li><a href="#" target="_blank">橱柜</a></li>
+                    <li><a href="#" target="_blank">多功能书房设计</a></li>
+                    <li><a href="#" target="_blank">进门玄关的鞋柜如何设置？</a></li>
+                </ul>
+            </div>
+            <div id="header-search-ad2" class="fl">
+            	<a href="#" title="为您服务" target="_blank"></a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="header-nav" class="container clearfix">
+    	<div id="header-nav-class" class="fl"><a id="header-nav-class-title" href="#">所有空间分类<span id="nav-class-icon-down"></span></a>
+            <ul id="nav-class-list-content">
+                <li class="header-nav-class-list">
+                    <a class="nav-class-list-hover-top">
+                        <i class="nav-class-list-icon"></i>
+                        <h3>卧房</h3>
+                    </a>
+                    <div class="nav-class-list-hover-bottom">
+                        <a href="#" title="整体衣柜" target="_blank">整体衣柜</a>
+                        <a href="#" title="衣帽间" target="_blank">衣帽间</a>
+                        <a href="#" title="飘窗利用" target="_blank">飘窗利用</a>
+                        <a href="#" title="定制床" target="_blank">定制床</a>
+                        <a href="#" title="装饰柜组合" target="_blank">装饰柜组合</a>
+                        <a href="#" title="电视柜组合" target="_blank">电视柜组合</a>
+                        <a href="#" title="米兰范儿厨房" target="_blank">米兰范儿厨房</a>
+                    </div>
+                    <div class="nav-class-detail">
+                    	<dl class="nav-class-detail-dl">
+                        	<dt>风格</dt>
+                            <dd><span>新实用</span>
+                            	<a href="#" target="_blank">北欧阳光</a>
+                                <a href="#" target="_blank">北美枫情</a>
+                                <a href="#" target="_blank">丹麦本色II</a>
+                                <a href="#" target="_blank">新实用主义</a>
+                                <a href="#" target="_blank">加州梦</a>
+                                <a href="#" target="_blank">芭提雅</a>
+                            </dd>
+                            <dd><span>简约风</span>
+                            	<a href="#" target="_blank">米兰剪影</a>
+                                <a href="#" target="_blank">简约主义</a>
+                                <a href="#" target="_blank">里昂春天</a>
+                                <a href="#" target="_blank">首尔之缤</a>
+                                <a href="#" target="_blank">浪漫主义</a>
+                                <a href="#" target="_blank">德国森林</a>
+                            </dd>
+                            <dd><span>欧式风</span>
+                            	<a href="#" target="_blank">卡罗摩卡</a>
+                                <a href="#" target="_blank">诺曼红影</a>
+                                <a href="#" target="_blank">挪威月色</a>
+                                <a href="#" target="_blank">马赛丽舍</a>
+                                <a href="#" target="_blank">维罗纳史诗</a>
+                                <a href="#" target="_blank">科莫湖光</a>
+                            </dd>
+                            <dd><span>中式风</span>
+                            	<a href="#" target="_blank">中国韵</a>
+                                <a href="#" target="_blank">新中式主义</a>
+                            </dd>
+                            <dd><span>田园风</span>
+                            	<a href="#" target="_blank">英伦印象</a>
+                                <a href="#" target="_blank">韩式田园</a>
+                            </dd>
+                            <dt>价格</dt>
+                            <dd class="dd-two">
+                            	<a href="#" target="_blank">所有</a>
+                                <a href="#" target="_blank" title="10000元以下定制家具">10000元以下</a>
+                                <a href="#" target="_blank" title="10000元-12000元定制家具">10000元-12000元</a>
+                                <a href="#" target="_blank" title="12000元-15000元定制家具">12000元-15000元</a>
+                                <a href="#" target="_blank" title="15000元-18000元定制家具">15000元-18000元</a>
+                                <a href="#" target="_blank" title="18000元以上定制家具">18000元以上</a>
+                            </dd>
+                            <dt>面积</dt>
+                            <dd class="dd-two">
+                            	<a href="#" target="_blank">所有</a>
+                                <a href="#" title="12平方以下定制家具">12㎡以下</a>
+                                <a href="#" title="12-14平方定制家具">12㎡-14㎡</a>
+                                <a href="#" title="14-18平方定制家具">14㎡-18㎡</a>
+                                <a href="#" title="18-20平方定制家具">18㎡-20㎡</a>
+                                <a href="#" title="20-24平方定制家具">20㎡-24㎡</a>
+                                <a href="#" title="24平方以上定制家具">24㎡以上</a>                               
+                            </dd>
+                        </dl>
+                        <div class="nav-class-detail-img">
+                        	<a href="#" target="_blank"><img src="img/dl/dl1.jpg" alt="给你一个家"/></a>
+                            <a href="#" target="_blank"><img src="img/dl/dl2.jpg" alt="和失眠说再见"/></a>
+                        </div>
+                    </div>
+                </li>
+                <li class="header-nav-class-list">
+                    <a class="nav-class-list-hover-top">
+                        <i class="nav-class-list-icon"></i>
+                        <h3>书房</h3>
+                    </a>
+                    <div class="nav-class-list-hover-bottom">
+                        <a href="#" title="榻榻米" target="_blank">榻榻米</a>
+                        <a href="#" title="书柜组合" target="_blank">书柜组合</a>
+                        <a href="#" title="直角书桌组合" target="_blank">直角书桌组合</a>
+                        <a href="#" title="转角书桌组合" target="_blank">转角书桌组合</a>
+                        <a href="#" title="多功能室" target="_blank">多功能室</a>
+                        <a href="#" title="简欧风格书房" target="_blank">简欧风格书房</a>
+                    </div>
+                    <div class="nav-class-detail" >
+                    	<dl class="nav-class-detail-dl">
+                        	<dt>风格</dt>
+                            <dd><span>新实用</span>
+                            	<a href="#" target="_blank">北欧阳光</a>
+                                <a href="#" target="_blank">北美枫情</a>
+                                <a href="#" target="_blank">丹麦本色II</a>
+                                <a href="#" target="_blank">新实用主义</a>
+                                <a href="#" target="_blank">加州梦</a>
+                                <a href="#" target="_blank">芭提雅</a>
+                            </dd>
+                            <dd><span>简约风</span>
+                            	<a href="#" target="_blank">米兰剪影</a>
+                                <a href="#" target="_blank">简约主义</a>
+                                <a href="#" target="_blank">里昂春天</a>
+                                <a href="#" target="_blank">首尔之缤</a>
+                                <a href="#" target="_blank">浪漫主义</a>
+                                <a href="#" target="_blank">德国森林</a>
+                            </dd>
+                            <dd><span>欧式风</span>
+                            	<a href="#" target="_blank">卡罗摩卡</a>
+                                <a href="#" target="_blank">诺曼红影</a>
+                                <a href="#" target="_blank">挪威月色</a>
+                                <a href="#" target="_blank">马赛丽舍</a>
+                                <a href="#" target="_blank">维罗纳史诗</a>
+                                <a href="#" target="_blank">科莫湖光</a>
+                            </dd>
+                            <dd><span>中式风</span>
+                            	<a href="#" target="_blank">中国韵</a>
+                                <a href="#" target="_blank">新中式主义</a>
+                            </dd>
+                            <dd><span>田园风</span>
+                            	<a href="#" target="_blank">英伦印象</a>
+                                <a href="#" target="_blank">韩式田园</a>
+                            </dd>
+                            <dt>价格</dt>
+                            <dd class="dd-two">
+                            	<a href="#" target="_blank">所有</a>
+                                <a href="#" target="_blank" title="5000元以下定制家具">5000元以下</a>
+                                <a href="#" target="_blank" title="5000元-7000元定制家具">5000元-7000元</a>
+                                <a href="#" target="_blank" title="7000元-8000元定制家具">7000元-8000元</a>
+                                <a href="#" target="_blank" title="8000元-10000元定制家具">8000元-10000元</a>
+                                <a href="#" target="_blank" title="10000元以上定制家具">10000元以上</a>
+                            </dd>
+                            <dt>面积</dt>
+                            <dd class="dd-two">
+                            	<a href="#" target="_blank">所有</a>
+                                <a href="#" title="8平方以下定制家具">8㎡以下</a>
+                                <a href="#" title="8-10平方定制家具">8㎡-10㎡</a>
+                                <a href="#" title="10-12平方定制家具">10㎡-12㎡</a>
+                                <a href="#" title="12-16平方定制家具">12㎡-16㎡</a>
+                                <a href="#" title="16平方定制家具">16㎡以上</a>                            
+                            </dd>
+                        </dl>
+                        <div class="nav-class-detail-img">
+                        	<a href="#" target="_blank"><img src="img/dl/dl3.jpg" alt="边玩边工作"/></a>
+                            <a href="#" target="_blank"><img src="img/dl/dl4.jpg" alt="神设计"/></a>
+                        </div>
+                    </div>
+                </li>
+                <li class="header-nav-class-list">
+                    <a class="nav-class-list-hover-top">
+                        <i class="nav-class-list-icon"></i>
+                        <h3>青少年房</h3>
+                    </a>
+                    <div class="nav-class-list-hover-bottom">
+                        <a href="#" title="榻榻米" target="_blank">榻榻米</a>
+                        <a href="#" title="衣柜组合" target="_blank">衣柜组合</a>
+                        <a href="#" title="上下床" target="_blank">上下床</a>
+                        <a href="#" title="书柜组合" target="_blank">书柜组合</a>
+                        <a href="#" title="书桌组合" target="_blank">书桌组合</a>
+                        <a href="#" title="飘窗利用" target="_blank">飘窗利用</a>
+                    </div>
+                    <div class="nav-class-detail">
+                    	<dl class="nav-class-detail-dl">
+                        	<dt>风格</dt>
+                            <dd>
+                            	<a href="#" target="_blank">所有</a>
+                                <a href="#" target="_blank">男孩的趣（快乐星球）</a>
+                                <a href="#" target="_blank">女孩的梦（快乐星球）</a>
+                                <a href="#" target="_blank">双子座（快乐星球）</a>
+                            </dd>
+                            <dt>价格</dt>
+                            <dd class="dd-two">
+                            	<a href="#" target="_blank">所有</a>
+                                <a href="#" target="_blank" title="6000元以下定制家具">6000元以下</a>
+                                <a href="#" target="_blank" title="6000元-8000元定制家具">6000元-8000元</a>
+                                <a href="#" target="_blank" title="8000元-10000元定制家具">8000元-10000元</a>
+                                <a href="#" target="_blank" title="10000元以上定制家具">10000元以上</a>
+                            </dd>
+                            <dt>面积</dt>
+                            <dd class="dd-two">
+                            	<a href="#" target="_blank">所有</a>
+                                <a href="#" title="8平方以下定制家具">8㎡以下</a>
+                                <a href="#" title="8-11平方定制家具">8㎡-11㎡</a>
+                                <a href="#" title="11-13平方定制家具">11㎡-13㎡</a>
+                                <a href="#" title="13-16平方定制家具">13㎡-16㎡</a>
+                                <a href="#" title="16-19平方定制家具">16㎡-19㎡</a>
+                                <a href="#" title="19平方定制家具">19㎡以上</a>                            
+                            </dd>
+                        </dl>
+                        <div class="nav-class-detail-img">
+                        	<a href="#" target="_blank"><img src="img/dl/dl5.jpg" alt="萌色"/></a>
+                            <a href="#" target="_blank"><img src="img/dl/dl6.jpg" alt="成长空间"/></a>
+                        </div>
+                    </div>
+                </li>
+                <li class="header-nav-class-list">
+                    <a class="nav-class-list-hover-top">
+                        <i class="nav-class-list-icon"></i>
+                        <h3>客餐厅</h3>
+                    </a>
+                    <div class="nav-class-list-hover-bottom">
+                        <a href="#" title="电视柜组合" target="_blank">电视柜组合</a>
+                        <a href="#" title="鞋柜组合" target="_blank">鞋柜组合</a>
+                        <a href="#" title="餐柜组合" target="_blank">餐柜组合</a>
+                        <a href="#" title="隔断柜组合" target="_blank">隔断柜组合</a>
+                        <a href="#" title="沙发茶几组合" target="_blank">沙发茶几组合</a>
+                        <a href="#" title="吧台组合" target="_blank">吧台组合</a>
+                    </div>
+                    <div class="nav-class-detail">
+                    	<dl class="nav-class-detail-dl">
+                        	<dt>风格</dt>
+                            <dd><span>新实用</span>
+                            	<a href="#" target="_blank">北欧阳光</a>
+                                <a href="#" target="_blank">北美枫情</a>
+                                <a href="#" target="_blank">丹麦本色II</a>
+                                <a href="#" target="_blank">新实用主义</a>
+                                <a href="#" target="_blank">加州梦</a>
+                                <a href="#" target="_blank">芭提雅</a>
+                            </dd>
+                            <dd class="dd-two"><span>简约风</span>
+                            	<a href="#" target="_blank">米兰剪影</a>
+                                <a href="#" target="_blank">简约主义</a>
+                                <a href="#" target="_blank">里昂春天</a>
+                                <a href="#" target="_blank">首尔之缤</a>
+                                <a href="#" target="_blank">浪漫主义</a>
+                                <a href="#" target="_blank">德国森林</a>
+                                <a href="#" target="_blank">伴你童行</a>
+                            </dd>
+                            <dd><span>欧式风</span>
+                            	<a href="#" target="_blank">卡罗摩卡</a>
+                                <a href="#" target="_blank">诺曼红影</a>
+                                <a href="#" target="_blank">挪威月色</a>
+                                <a href="#" target="_blank">马赛丽舍</a>
+                                <a href="#" target="_blank">维罗纳史诗</a>
+                                <a href="#" target="_blank">科莫湖光</a>
+                            </dd>
+                            <dd><span>中式风</span>
+                            	<a href="#" target="_blank">中国韵</a>
+                                <a href="#" target="_blank">新中式主义</a>
+                            </dd>
+                            <dd><span>田园风</span>
+                            	<a href="#" target="_blank">英伦印象</a>
+                                <a href="#" target="_blank">韩式田园</a>
+                            </dd>
+                            <dt>价格</dt>
+                            <dd class="dd-two">
+                            	<a href="#" target="_blank">所有</a>
+                                <a href="#" target="_blank" title="10000元以下定制家具">10000元以下</a>
+                                <a href="#" target="_blank" title="10000元-12000元定制家具">10000元-12000元</a>
+                                <a href="#" target="_blank" title="12000元-14000元定制家具">12000元-14000元</a>
+                                <a href="#" target="_blank" title="14000元-16000元定制家具">14000元-16000元</a>
+                                <a href="#" target="_blank" title="16000元以上定制家具">16000元以上</a>
+                            </dd>
+                            <dt>面积</dt>
+                            <dd class="dd-two">
+                            	<a href="#" target="_blank">所有</a>
+                                <a href="#" title="25平方以下定制家具">25㎡以下</a>
+                                <a href="#" title="25-30平方定制家具">25㎡-30㎡</a>
+                                <a href="#" title="30-35平方定制家具">30㎡-35㎡</a>
+                                <a href="#" title="35-38平方定制家具">35㎡-38㎡</a>
+                                <a href="#" title="38-44平方定制家具">38㎡-44㎡</a>
+                                <a href="#" title="44平方以上定制家具">44㎡以上</a>                               
+                            </dd>
+                        </dl>
+                        <div class="nav-class-detail-img">
+                        	<a href="#" target="_blank"><img src="img/dl/dl7.jpg" alt="更懂你"/></a>
+                            <a href="#" target="_blank"><img src="img/dl/dl8.jpg" alt="李连荣"/></a>
+                        </div>
+                    </div>
+                </li>
+                <li class="header-nav-class-list">
+                    <a class="nav-class-list-hover-top">
+                        <i class="nav-class-list-icon"></i>
+                        <h3>厨房</h3>
+                    </a>
+                    <div class="nav-class-list-hover-bottom">
+                        <a href="#" title="一字型" target="_blank">一字型</a>
+                        <a href="#" title="L型" target="_blank">L型</a>
+                        <a href="#" title="U型" target="_blank">U型</a>
+                        <a href="#" title="英伦晴风" target="_blank">英伦晴风</a>
+                        <a href="#" title="新实用厨房" target="_blank">新实用厨房</a>
+                        <a href="#" title="紫晶雅致厨房" target="_blank">紫晶雅致厨房</a>
+                        <a href="#" title="提拉米苏厨房" target="_blank">提拉米苏厨房</a>
+                        <a href="#" title="丹麦厨房" target="_blank">丹麦厨房</a>
+                    </div>
+                    <div class="nav-class-detail">
+                    	<dl class="nav-class-detail-dl">
+                        	<dt>风格</dt>
+                            <dd class="dd-two dd-n">
+                            	<a href="#" title="" target="_blank">所有</a>
+                                <a href="#" title="丹麦暖阳" target="_blank">丹麦暖阳</a>
+                                <a href="#" title="紫晶魅影" target="_blank">紫晶魅影</a>
+                                <a href="#" title="英伦晴风" target="_blank">英伦晴风</a>
+                                <a href="#" title="芝士物语" target="_blank">芝士物语</a>
+                                <a href="#" title="提拉米苏" target="_blank">提拉米苏</a>
+                                <a href="#" title="午后红茶" target="_blank">午后红茶</a>
+                                <a href="#" title="咖啡时光" target="_blank">咖啡时光</a>
+                                <a href="#" title="芬兰木歌" target="_blank">芬兰木歌</a>
+                                <a href="#" title="新实用主义" target="_blank">新实用主义</a>
+                                <a href="#" title="罗马假日" target="_blank">罗马假日</a>
+                                <a href="#" title="巴黎慢调" target="_blank">巴黎慢调</a>
+                                <a href="#" title="剑桥悠城" target="_blank">剑桥悠城</a>
+                                <a href="#" title="英郡素影" target="_blank">英郡素影</a>
+                                <a href="#" title="珀斯午后" target="_blank">珀斯午后</a>
+                                <a href="#" title="戛纳探戈" target="_blank">戛纳探戈</a>
+                                <a href="#" title="里昂春天" target="_blank">里昂春天</a>
+                                <a href="#" title="维也纳韵" target="_blank">维也纳韵</a>
+                                <a href="#" title="莱茵河畔" target="_blank">莱茵河畔</a>
+                                <a href="#" title="苏格兰时光" target="_blank">苏格兰时光</a>
+                                <a href="#" title="普罗旺斯" target="_blank">普罗旺斯</a>
+                                <a href="#" title="西西里" target="_blank">西西里</a>
+                                <a href="#" title="科莫湖光" target="_blank">科莫湖光</a>
+                                <a href="#" title="琥珀迷情" target="_blank">琥珀迷情</a>
+                                <a href="#" title="魅影啡丝" target="_blank">魅影啡丝</a>
+                            </dd>
+                            <dt>价格</dt>
+                            <dd class="dd-two">
+                            	<a href="#" target="_blank">所有</a>
+                                <a href="#" target="_blank" title="7000元以下定制家具">7000元以下</a>
+                                <a href="#" target="_blank" title="7000元-8000元定制家具">7000元-8000元</a>
+                                <a href="#" target="_blank" title="8000元-9000元定制家具">8000元-9000元</a>
+                                <a href="#" target="_blank" title="9000元-11000元定制家具">9000元-11000元</a>
+                                <a href="#" target="_blank" title="11000元以上定制家具">11000元以上</a>
+                            </dd>
+                            <dt>面积</dt>
+                            <dd class="dd-two">
+                            	<a href="#" target="_blank">所有</a>
+                                <a href="#" title="5平方以下定制家具">5㎡以下</a>
+                                <a href="#" title="5-6平方定制家具">5㎡-6㎡</a>
+                                <a href="#" title="6-7平方定制家具">6㎡-7㎡</a>
+                                <a href="#" title="7-8平方定制家具">7㎡-8㎡</a>
+                                <a href="#" title="8-10平方定制家具">8㎡-10㎡</a>
+                                <a href="#" title="10平方以上定制家具">40㎡以上</a>                               
+                            </dd>
+                        </dl>
+                        <div class="nav-class-detail-img">
+                        	<a href="#" target="_blank"><img src="img/dl/dl9.jpg" alt="多功能"/></a>
+                            <a href="#" target="_blank"><img src="img/dl/dl10.jpg" alt="雷煜坤"/></a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="header-nav-bar" class="fl">
+        	<ul id="header-nav-bar-list">
+            	<li><a href="#" target="_blank">首页</a></li>
+                <li><a href="#" target="_blank">百变定制</a></li>
+                <li><a href="#" target="_blank">全屋定制</a></li>
+                <li><a href="#" target="_blank">家居DIY</a></li>
+                <li><a href="#" target="_blank">找设计师</a></li>
+                <li><a href="#" target="_blank">定制攻略</a><i class="small-png hot"></i></li>
+                <li><a href="#" target="_blank">定制百科</a></li>
+                <li><a href="#" target="_blank">在线免费设计</a><i class="small-png news"></i></li>
+                <li><a href="#" target="_blank">搜搜我家</a></li>
+                <li><a href="#" target="_blank">招商加盟</a></li>
+            </ul>
+        </div>
+    
+    </div>
+	
+</header>
+<div class="tap" id="top-tap">
+	<div class="tap-content">
+    	<a class="tap-content-a active" href="#" title="五大免费家居体验" target="_blank"><img src="img/tap/1.jpg" alt="五大免费家居体验"/></a>
+        <a class="tap-content-a" href="#" title="年中大促" target="_blank"><img src="img/tap/2.jpg" alt="年中大促"/></a>
+        <a class="tap-content-a" href="#" title="科技定制" target="_blank"><img src="img/tap/3.jpg" alt="科技定制"/></a>
+        <a class="tap-content-a" href="#" title="伴你童行" target="_blank"><img src="img/tap/4.jpg" alt="伴你童行"/></a>
+        <a class="tap-content-a" href="#" title="厨房家具" target="_blank"><img src="img/tap/5.jpg" alt="厨房家具"/></a>
+        <a class="tap-content-a" href="#" title="实力才是影响力" target="_blank"><img src="img/tap/6.jpg" alt="实力才是影响力"/></a>
+    </div>
+    <ul class="tap-list">
+    	<li class="tap-list-li show"></li>
+        <li class="tap-list-li"></li>
+        <li class="tap-list-li"></li>
+        <li class="tap-list-li" ></li>
+        <li class="tap-list-li"></li>
+        <li class="tap-list-li"></li>
+        <li class="tap-to-first"></li>
+    </ul>
+
+</div>
+<div id="form" class="container ">
+	<div id="form-content">
+    	<h4 class="savemoney">现在预约&nbsp; 领取200元现金券</h4>
+    	<form action="#" method="post" >
+        	<input type="text" name="name" id="name" placeholder="您的姓名" value="您的姓名"/>
+            <input type="tel" name="phone" id="phone" placeholder="手机/电话" value="手机/电话"/>
+            <select name="province">
+                <option value="1" selected="selected">广东</option>
+                <option value="3">北京</option>
+                <option value="4">上海</option>
+                <option value="9">江苏</option>
+                <option value="27">山东</option>
+                <option value="5">陕西</option>
+                <option value="6">四川</option>
+                <option value="7">重庆</option>
+                <option value="8">浙江</option>
+                <option value="10">湖北</option>
+                <option value="11">辽宁</option>
+                <option value="12">安徽</option>
+                <option value="13">福建</option>
+                <option value="14">甘肃</option>
+                <option value="15">广西</option>
+                <option value="16">贵州</option>
+                <option value="17">海南</option>
+                <option value="18">河北</option>
+                <option value="19">黑龙江</option>
+                <option value="20">河南</option>
+                <option value="21">湖南</option>
+                <option value="22">江西</option>
+                <option value="23">吉林</option>
+                <option value="24">内蒙古</option>
+                <option value="28">山西</option>
+                <option value="29">天津</option>
+                <option value="30">新疆</option>
+                <option value="31">云南</option>
+			</select>
+            <select name="city">
+                <option value="1">广州</option>
+                <option value="14">深圳</option>
+                <option value="145">珠海</option>
+                <option value="23">东莞</option>
+                <option value="13">中山</option>
+                <option value="57">汕头</option>
+                <option value="52">湛江</option>
+                <option value="137">清远</option>
+                <option value="58">韶关</option>
+                <option value="12">佛山</option>
+                <option value="56">梅州</option>
+                <option value="71">河源</option>
+                <option value="113">惠州</option>
+                <option value="133">桂城</option>
+                <option value="134">禅城区</option>
+                <option value="141">四会市</option>
+                <option value="157">潮州</option>
+                <option value="340">普宁</option>
+                <option value="420">开平市</option>
+                <option value="452">阳春市</option>
+                <option value="515">佛冈县</option>
+                <option value="517">恩平市</option>
+                <option value="522">鹤山市</option>
+                <option value="670">坦洲镇</option>
+                <option value="671">小榄镇</option>
+                <option value="715">古镇</option>
+                <option value="717">惠阳区</option>
+                <option value="728">塘厦镇</option>
+                <option value="730">顺德</option>
+                <option value="819">大良区</option>
+                <option value="820">西樵镇</option>
+                <option value="821">寮步镇</option>
+                <option value="823">虎门镇</option>
+                <option value="825">常平镇</option>
+			</select>
+     		<button type="submit" id="navSubmit">预约免费量尺</button>
+            <p class="error">姓名不能为空</p>
+        </form>
+        <div id="form-content-scroll">
+        	<h3>今日已有<strong>819</strong>人申请</h3>
+            <ul class="scroll">
+            	<li class="scroll-content">
+                	<h4><time>14:22:56</time><span>广州刘女士</span></h4>
+                    <p>已申请06月27日量尺</p>
+                </li>
+                <li class="scroll-content">
+                	<h4><time>14:23:36</time><span>深圳李先生</span></h4>
+                    <p>已申请06月28日量尺</p>
+                </li>
+                <li class="scroll-content">
+                	<h4><time>14:24:56</time><span>中山王女士</span></h4>
+                    <p>已申请06月29日量尺</p>
+                </li>
+            </ul>
+        </div>
+        <div id="form-content-bottom"><span>我们目前已经为全国<em>716434</em>个楼盘的<em>2364231</em>个户型，提供了<em>6856269</em>个方案，至今为<em>2539359</em>名客户提供免费专享服务！</span></div>
+    </div>
+</div>
+
+<div id="steps" class="container clearfix">
+	<ul id="steps-list">
+    	<li><a href="#" target="_blank"><img src="img/steps/dzlc.jpg" alt="定制流程"></a></li>
+        <li class="steps-list-li"><a href="#" target="_blank"><img src="img/steps/yuyue.jpg" alt="网上预约"></a></li>
+        <li class="steps-list-li"><a href="#" target="_blank"><img src="img/steps/liangchi.jpg" alt="上门量尺"></a></li>
+        <li class="steps-list-li"><a href="#" target="_blank"><img src="img/steps/hetong.jpg" alt="查看合同"></a></li>
+        <li class="steps-list-li"><a href="#" target="_blank"><img src="img/steps/peisong.jpg" alt="配送安装"></a></li>
+    </ul>
+</div>
+
+<div id="suggest" class="container clearfix">
+	<div class="suggest-left fl">
+    	<div class="suggest-tap">
+        	<a class="title activeT " href="#" >楼盘案例</a>
+            <a class="title" href="#" >新居快报</a>
+            <div class="suggest-tap-content active">
+            	<p><span class="house-title">真是楼盘服务案例</span><span>[广州]</span></p>
+            	<ul>
+                	<li><a href="#" target="_blank"><span class="house-name">万业观山洪郡</span><span class="suggest-tap-list-icon"></span> <span class="suggest-tap-list-num">409</span></a></li>
+                    <li><a href="#" target="_blank"><span class="house-name">阳光花园</span><span class="suggest-tap-list-icon"></span> <span class="suggest-tap-list-num">519</span></a></li>
+                    <li><a href="#" target="_blank"><span class="house-name">广州府前铭泰·公馆</span><span class="suggest-tap-list-icon"></span> <span class="suggest-tap-list-num">486</span></a></li>
+                    <li><a href="#" target="_blank"><span class="house-name">悦江上品苑</span><span class="suggest-tap-list-icon"></span> <span class="suggest-tap-list-num">672</span></a></li>
+                    <li><a href="#" target="_blank"><span class="house-name">金地香山湖</span><span class="suggest-tap-list-icon"></span> <span class="suggest-tap-list-num">816</span></a></li>
+                    <li><a href="#" target="_blank"><span class="house-name">万龙小区</span><span class="suggest-tap-list-icon"></span> <span class="suggest-tap-list-num">246</span></a></li>
+                    <li><a href="#" target="_blank"><span class="house-name">盛天国际</span><span class="suggest-tap-list-icon"></span> <span class="suggest-tap-list-num">544</span></a></li>
+                    <li><a href="#" target="_blank"><span class="house-name">翠湖山庄</span><span class="suggest-tap-list-icon"></span> <span class="suggest-tap-list-num">439</span></a></li>
+                </ul>
+                <a class="more fr" href="" target="_blank">更多</a>
+            </div>
+            <div class="suggest-tap-content ">
+                    <ul>
+                        <li><a href="#" target="_blank">年中大促 尚品宅配12周年庆</a></li>
+                        <li><a href="#" target="_blank">为什么要先定制家具后装修？这是我见过最好的答案！</a></li>
+                        <li><a href="#" target="_blank">家居+VR | 这一次，尚品宅配再次颠覆用户体验</a></li>
+                        <li><a href="#" target="_blank">尚品宅配凭什么成2015年度粤连锁50强唯一上榜家具企业？</a></li>
+                        <li><a href="#" target="_blank">衣柜门效果图</a></li>
+                        <li><a href="#" target="_blank">衣柜门板材料郡</a></li>
+                        <li><a href="#" target="_blank">衣柜裤架全知悉</a></li>
+                        <li><a href="#" target="_blank">衣柜格局设计</a></li>
+                        <li><a href="#" target="_blank">衣柜挂架知识</a></li>
+                    </ul>
+            </div>
+        </div>
+    </div>
+	<ul class="suggest-list fr clearfix">
+    	<li><a href="#" target="_blank"><img src="img/suggest/1.jpg" alt="书房家具"></a></li>
+        <li><a href="#" target="_blank"><img src="img/suggest/2.jpg" alt="青少年房家具"></a></li>
+        <li><a href="#" target="_blank"><img src="img/suggest/3.jpg" alt="卧室家具"></a></li>
+        <li><a href="#" target="_blank"><img src="img/suggest/4.jpg" alt="田园餐具家具"></a></li>
+        
+    </ul>
+</div>
+
+<div id="function-work" class="fl-section container clearfix">
+	<div class="fl-section-top">
+    	<img class="fl scroll-display-img" data-img-src="img/fl/fl1/tit_f1.jpg" src="" alt="功能定制"/>
+        <ul class="fl-section-list fr">
+        	<li><a href="#" target="_blank">专属SOHO空间</a></li>
+            <li><a href="#" target="_blank">设计达人SHOW</a></li>
+            <li><a href="#" target="_blank">治愈失眠</a></li>
+            <li><a href="#" target="_blank">秘密花园</a></li>
+        </ul>
+    </div>
+    <div class="fl-section-content clearfix">
+    	<div class="fl-section-content-left fl">
+        	<ul>
+            	<li class="section-content-list"><a class="active" href="#" target="_blank">榻榻米</a></li>
+                <li class="section-content-list"><a href="#" target="_blank">飘窗利用</a></li>
+                <li class="section-content-list"><a href="#" target="_blank">客餐厅</a></li>
+                <li class="section-content-list"><a href="#" target="_blank">鞋柜</a></li>
+                <li class="section-content-list"><a href="#" target="_blank">梳妆台</a></li>
+                <li class="section-content-list"><a class="active" href="#" target="_blank">上下床</a></li>
+                <li class="section-content-list"><a href="#" target="_blank">玄关</a></li>
+                <li class="section-content-list"><a href="#" target="_blank">小户型</a></li>
+                <li class="section-content-list"><a href="#" target="_blank">多功能书房设计</a></li>
+                <li class="section-content-list"><a href="#" target="_blank">电视柜</a></li>
+                <li class="section-content-list"><a href="#" target="_blank">家具效果图</a></li>
+                <li class="section-content-list"><a href="#" target="_blank">衣帽间</a></li>
+                <li class="section-content-list"><a href="#" target="_blank">儿童房</a></li>
+                <li class="section-content-list"><a href="#" target="_blank">凹凸拉</a></li>
+                <li class="section-content-list"><a class="active" href="#" target="_blank">衣柜</a></li>
+                <li class="section-content-list"><a class="active" href="#" target="_blank">避梁包柱</a></li>
+            </ul>
+    	</div>
+        <div class="fl-section-content-right fr">
+        	<div class="fl-section-content-right-top">
+            	<div class="content-right-top-big fl">
+                	<a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl1/1_1273.jpg" src="" alt="沙发背景墙设计"/></a>
+                </div>
+                <div class="content-right-top-small fr">
+                	<a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl1/2_50.jpg"  src="" alt="舒适定制床"/></a>
+                </div>
+    		</div>
+            <ul class="fl-section-content-right-bottom">
+            	<li><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl1/3_31.jpg" src="" alt="榻榻米热榜"/></a></li>
+                <li><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl1/4_26.jpg" src="" alt="橱柜热榜"/></a></li>
+                <li class="last-li-img"><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl1/5_19.jpg" src="" alt="书柜热榜"/></a></li>
+    		</ul>
+    	</div>
+    	
+        
+    </div>
+</div>
+
+<div id="wave-make" class="fl-section container clearfix">
+	<div class="fl-section-top">
+    	<img class="fl scroll-display-img" data-img-src="img/fl/fl2/tit_f2.jpg" src="" alt="潮流风格"/>
+        <ul class="fl-section-list fr">
+        	<li><a href="#" target="_blank">卡罗摩卡</a></li>
+            <li><a href="#" target="_blank">英伦印象</a></li>
+            <li><a href="#" target="_blank">里昂春天</a></li>
+            <li><a href="#" target="_blank">简约主义</a></li>
+            <li><a href="#" target="_blank">丹麦本色Ⅱ</a></li>
+            <li><a href="#" target="_blank">剑桥悠城</a></li>
+            <li><a href="#" target="_blank">更多>></a></li>
+        </ul>
+    </div>
+    <div class="fl-section-content clearfix">
+    	<div class="fl-section-content-left fl">
+        	<div class="fl-section-content-left-top">
+            	<a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl2/left-top.jpg" src="" alt="扫码获取图库"/></a>
+            </div>
+            <div class="fl-section-content-left-bottom">
+            	<div class="content-left-bottom-title clearfix">
+                	<h3>家居学堂</h3>
+                    <a href="#" target="_blank">more>></a>
+                </div>
+                <ul>
+                    <li class="section-content-list"><i class="section-content-icon"></i><a class="active" href="#" target="_blank">关于客厅风水的小常识</a></li>
+                    <li class="section-content-list"><i class="section-content-icon"></i><a href="#" target="_blank">床这么设计，收纳空间立增5㎡</a></li>
+                    <li class="section-content-list"><i class="section-content-icon"></i><a href="#" target="_blank">春季装修技巧 七大注意事项</a></li>
+                </ul>
+            </div>
+    	</div>
+        <div class="fl-section-content-right fr">
+        	<div class="fl-section-content-right-top">
+            	<div class="content-right-top-big fl">
+                	<div class="tap">
+                        <div class="tap-content">
+                            <a class="tap-content-a active" href="#" title="伴你童行" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl2/tap/1.jpg" src=""  alt="伴你童行"/></a>
+                            <a class="tap-content-a" href="#" title="新实用主义" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl2/tap/2.jpg" src="" alt="新实用主义"/></a>
+                            <a class="tap-content-a" href="#" title="女孩的梦" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl2/tap/3.jpg" src="" alt="女孩的梦"/></a>
+                            <a class="tap-content-a" href="#" title="新中式主义" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl2/tap/4.jpg" src="" alt="新中式主义"/></a>
+                        </div>
+                        <ul class="tap-list">
+                            <li class="tap-list-li active"></li>
+                            <li class="tap-list-li"></li>
+                            <li class="tap-list-li"></li>
+                            <li class="tap-list-li" ></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="content-right-top-small detail fr">
+                	<div class="right-top-small-1">
+                    	<a class="top-small-img" href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl2/3_19.jpg" src="" alt="舒适定制床"/></a>
+                        <div class="right-top-small-detail">
+                        	<h3>男孩的趣</h3>
+                            <p>天蓝色与白色色调相互搭配，烘托出空间独有的时尚清新。</p>
+                            <a href="#" target="_blank">详情>></a>
+                        </div>
+                    </div>
+                    <div class="right-top-small-1">
+                    	<a class="top-small-img" href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl2/2_33.jpg" src="" alt="舒适定制床"/></a>
+                        <div class="right-top-small-detail">
+                        	<h3>莱茵河畔</h3>
+                            <p>湖光木纹搭配珠光木纹板材，让空间散发出一种自然脱俗的气息。</p>
+                            <a href="#" target="_blank">详情>></a>
+                        </div>
+                    </div>
+                	
+                </div>
+    		</div>
+            <ul class="fl-section-content-right-bottom">
+            	<li><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl2/4_23.jpg" src="" alt="韩式田园"/></a></li>
+                <li><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl2/5_13.jpg" src="" alt="卡罗摩卡"/></a></li>
+                <li class="last-li-img"><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl2/6_21.jpg" src="" alt="英伦晴风"/></a></li>
+    		</ul>
+    	</div>
+    	
+        
+    </div>
+</div>
+
+<div id="hot-make" class="fl-section container clearfix">
+	<div class="fl-section-top">
+    	<img class="fl scroll-display-img" data-img-src="img/fl/fl3/tit_f3.jpg" src="" alt="热门定制"/>
+        <ul class="fl-section-list fr">
+        	<li><a href="#" target="_blank">定制衣柜</a></li>
+            <li><a href="#" target="_blank">定制橱柜</a></li>
+            <li><a href="#" target="_blank">电视柜组合</a></li>
+            <li><a href="#" target="_blank">书柜组合</a></li>
+            <li><a href="#" target="_blank">餐柜组合</a></li>
+            <li><a href="#" target="_blank">飘窗利用</a></li>
+            <li><a href="#" target="_blank">更多>></a></li>
+        </ul>
+    </div>
+    <div class="fl-section-content clearfix">
+    	<div class="fl-section-content-left fl">
+        	<div class="fl-section-content-left-top">
+            	<a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl3/left-top.jpg" alt="扫码获取图库"/></a>
+            </div>
+            <div class="fl-section-content-left-bottom">
+            	<a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl3/left-bottom.jpg" alt="扫码获取图库"/></a>
+            </div>
+    	</div>
+        <div class="fl-section-content-right fr">
+        	<div class="fl-section-content-right-top">
+            	<div class="content-right-top-big fl">
+                	<a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl3/33333333-633_44.jpg" alt="拯救失眠"/></a>
+                </div>
+                <div class="content-right-top-small detail fr">
+                	<div class="right-top-small-1">
+                    	<a class="top-small-img" href="#" target="_blank"><img src="img/fl/fl3/2_34.jpg" alt="给他更好的陪伴"/></a>
+                        <div class="right-top-small-detail">
+                        	<h3>给他更好的陪伴</h3>
+                            <p>在电视柜旁设计一个小型吧台型书桌，结合错落有序的吊柜组合，使空间充满活力。</p>
+                            <a href="#" target="_blank">马上观看>></a>
+                        </div>
+                        <p class="detail-people">已有<strong>1230</strong>人定制</p>
+                    </div>
+                    <div class="right-top-small-1">
+                    	<a class="top-small-img" href="#" target="_blank"><img src="img/fl/fl3/3_20.jpg" alt="幸福指数提升物"/></a>
+                        <div class="right-top-small-detail">
+                        	<h3>幸福指数提升物</h3>
+                            <p>洗手台的设计，方便日常生活，另外吊柜的设计增加了阳台的储物空间。</p>
+                            <a href="#" target="_blank">马上观看>></a>
+                        </div>
+                        <p class="detail-people">已有<strong>1667</strong>人定制</p>
+                    </div>
+                    <div class="right-top-small-1">
+                    	<a class="top-small-img" href="#" target="_blank"><img src="img/fl/fl3/6_23.jpg" alt="罗曼蒂克的生活"/></a>
+                        <div class="right-top-small-detail">
+                        	<h3>罗曼蒂克的生活</h3>
+                            <p>采用浪漫的丁香紫来点缀，从上下床设计到书柜设计，凸显空间人性化的便利性能。</p>
+                            <a href="#" target="_blank">马上观看>></a>
+                        </div>
+                        <p class="detail-people">已有<strong>1410</strong>人定制</p>
+                    </div>
+                </div>
+    		</div>
+            <ul class="fl-section-content-right-bottom">
+            	<li><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl3/4_24.jpg" alt="榻榻米热榜"/></a></li>
+                <li class="last-li-img"><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl3/5_14.jpg" alt="橱柜热榜"/></a></li>
+    		</ul>
+    	</div>
+    	
+        
+    </div>
+</div>
+
+<div id="change-make" class="fl-section container clearfix">
+	<div class="fl-section-top">
+    	<img class="fl scroll-display-img" data-img-src="img/fl/fl4/tit_f4.jpg" alt="百变定制"/>
+        <ul class="fl-section-list fr">
+        	<li><a href="#" target="_blank">卧房</a></li>
+            <li><a href="#" target="_blank">书房</a></li>
+            <li><a href="#" target="_blank">青少年房</a></li>
+            <li><a href="#" target="_blank">客厅</a></li>
+            <li><a href="#" target="_blank">餐厅</a></li>
+            <li><a href="#" target="_blank">厨房</a></li>
+            <li><a href="#" target="_blank">更多>></a></li>
+        </ul>
+    </div>
+    <div class="fl-section-content clearfix">
+    	<div class="fl-section-content-left fl">
+        	<div class="fl-section-content-left-top">
+            	<h3>百变设计</h3>
+                <p>一样的造型百变的户型</p>
+            	<ul class="fl-section-content-left-list">
+                    <li><img class="active scroll-display-img" data-img-src="img/fl/fl4/3_22.jpg" alt="书房造型" title="13㎡书房"/></li>
+                    <li class="even"><img class="scroll-display-img " data-img-src="img/fl/fl4/2_36.jpg" alt="卧室造型" title="13㎡卧室"/></li>
+                    <li><img class="scroll-display-img" data-img-src="img/fl/fl4/1_32.jpg" alt="青少年房造型" title="10㎡青少年房"/></li>
+                    <li class="even"><img class="scroll-display-img " data-img-src="img/fl/fl4/4_26.jpg" alt="客餐厅造型" title="28㎡客餐厅"/></li>
+    			</ul>
+            </div>
+            <div class="fl-section-content-left-bottom">
+            	<a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl4/ydzxn.jpg" alt="百变定制"/></a>
+            </div>
+    	</div>
+        <div class="fl-section-content-right fr">
+        	<div class="fl-section-content-right">
+            	<ul class="content-right-big fl">
+                	<li><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl4/清新园.jpg" alt="清新园"/></a></li>
+                    <li class="second"><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl4/典雅园.jpg" alt="典雅园"/></a></li>
+                    <li class="third"><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl4/趣味园.jpg" alt="趣味园"/></a></li>
+                    <li class="last"><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl4/知识园.jpg" alt="知识园"/></a></li>
+                </ul>
+                <div class="content-right-small fr">
+                	<div class="tap">
+                        <div class="tap-content">
+                            <a class="tap-content-a active" href="#" title="家具DIY" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl4/家具DIY.jpg" alt="家具DIY"/></a>
+                            <a class="tap-content-a" href="#" title="厨房体验" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl4/厨房体验.jpg" alt="厨房体验"/></a>
+                        </div>
+                        <ul class="tap-list">
+                            <li class="tap-list-li active"></li>
+                            <li class="tap-list-li"></li>
+                        </ul>
+                    </div>
+                    <div class="change-make-detail">
+                    	<h3>同一空间无限可能</h3>
+                        <ul class="change-make-list">
+                        	<li ><a href="#" target="_blank">9种效果教你打造私密卧室</a></li>
+                            <li><a href="#" target="_blank">5㎡小厨房 增加收纳有妙招</a></li>
+                            <li><a href="#" target="_blank">个性设计 电视组柜华丽变身</a></li>
+                            <li><a href="#" target="_blank">不同的儿童房 一样的精彩童年</a></li>
+                            <li><a href="#" target="_blank">百变书房 感受百变人生</a></li>
+                            <li class="hidden"><a href="#" target="_blank">简约客厅演绎8种不同风情</a></li>
+                            <li class="hidden"><a href="#" target="_blank">8㎡儿童戯的8种变幻</a></li>
+                            <li class="hidden"><a href="#" target="_blank">一样户型 别样设计的书房</a></li>
+                            <li class="hidden"><a href="#" target="_blank">17㎡卧房布置 幸福空间不一样</a></li>
+                            <li class="hidden"><a href="#" target="_blank">百变餐边柜 功能与造型心机搭</a></li>
+                        </ul>
+                        <div class="change-make-detail-button">
+                            <span class="active" ><</span>
+                            <span>></span>
+                        </div>
+                    </div>
+                </div>
+    		</div>
+    	</div>
+    </div>
+</div>
+
+<div id="house-make" class="fl-section container clearfix">
+	<div class="fl-section-top">
+    	<img class="fl scroll-display-img" data-img-src="img/fl/fl5/tit_f5.jpg" alt="功能定制"/>
+        <ul class="fl-section-list fr">
+        	<li><a href="#" target="_blank">两房两厅</a></li>
+            <li><a href="#" target="_blank">三房两厅</a></li>
+            <li><a href="#" target="_blank">四房两厅</a></li>
+            <li><a href="#" target="_blank">更多>></a></li>
+        </ul>
+    </div>
+    <div class="fl-section-content clearfix">
+    	<div class="fl-section-content-left fl">
+        	<div class="content-left-top">
+            	<a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl5/1_34.jpg"/></a>
+                <div class="content-left-top-detail">
+                	<h3>尚东君御</h3>
+					<p>3室2厅1卫1厨 91㎡</p>
+					<p class="price">特惠<strong>65950</strong>元（全屋46件）</p>
+                </div>
+            </div>
+            <div class="content-left-bottom">
+            	<h3>论坛热帖</h3>
+                <ul class="content-left-bottom-list">
+                	<li>
+                        <a href="#" target="_blank">
+                            <img class="scroll-display-img" data-img-src="img/fl/fl5/3_16.jpg" alt="厨房设计"/>
+                            <span class="bottom-list-title">求设计年轻夫妇居住的三房两室</span>
+                            <time class="bottom-list-time">2016-06-14</time>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">
+                            <img class="scroll-display-img" data-img-src="img/fl/fl5/37_2.jpg" alt="儿童玩耍区"/>
+                            <span class="bottom-list-title">儿童玩耍区</span>
+                            <time class="bottom-list-time">2016-06-10</time>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">
+                            <img class="scroll-display-img" data-img-src="img/fl/fl5/37_2.jpg" alt="6㎡书房设计"/>
+                            <span class="bottom-list-title">6㎡书房设计</span>
+                            <time class="bottom-list-time">2016-06-16</time>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" target="_blank">
+                            <img class="scroll-display-img" data-img-src="img/fl/fl5/30.jpg" alt="三居室设计"/>
+                            <span class="bottom-list-title">求设计师设计带孩子三居室</span>
+                            <time class="bottom-list-time">2016-06-15</time>
+                        </a>
+                    </li>
+                </ul>
+            
+            </div>
+    	</div>
+        <div class="fl-section-content-right fr">
+        	<div class="fl-section-content-right-top">
+            	<div class="content-right-top-big fl">
+                	<a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl5/1_33.jpg" alt="追逐阳光式生活"/></a>
+                </div>
+                <div class="content-right-top-small fr">
+                	<a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl5/2_37.jpg" alt="夏日厨房嗨起来"/></a>
+                </div>
+    		</div>
+            <ul class="fl-section-content-right-bottom">
+            	<li><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl5/00000000-600_88.jpg" alt="主卧"/></a></li>
+                <li><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl5/22222222-622_90.jpg" alt="次卧"/></a></li>
+                <li class="last-li-img"><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl5/99999999-699_91.jpg" alt="青少年房"/></a></li>
+    		</ul>
+    	</div>
+    	
+        
+    </div>
+</div>
+
+<div id="designer" class="container clearfix">
+	<div class="fl-section-top">
+    	<img class="fl scroll-display-img" data-img-src="img/fl/fl6/tit_f6.jpg" alt="功能定制"/>
+    </div>
+    <div class="fl-section-content clearfix">
+    	<div class="fl-section-content-left fl">
+            <a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl6/666666-666666662-.jpg"/></a>
+    	</div>
+        <div class="fl-section-content-right fr">
+        	<ul class="fl-section-content-right-design fl">
+            	<li><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl6/design/1.jpg" alt="设计师"></a></li>
+                <li><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl6/design/2.jpg" alt="设计师"></a></li>
+                <li><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl6/design/3.jpg" alt="设计师"></a></li>
+                <li><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl6/design/4.jpg" alt="设计师"></a></li>
+                <li class="five"><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl6/design/5.jpg" alt="设计师"></a></li>
+                <li><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl6/design/6.jpg" alt="设计师"></a></li>
+                <li><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl6/design/7.jpg" alt="设计师"></a></li>
+                <li><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl6/design/8.jpg" alt="设计师"></a></li>
+                <li><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl6/design/9.jpg" alt="设计师"></a></li>
+                <li class="five"><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl6/design/10.jpg" alt="设计师"></a></li>
+                <li><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl6/design/11.jpg" alt="设计师"></a></li>
+                <li><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl6/design/12.jpg" alt="设计师"></a></li>
+                <li><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl6/design/13.jpg" alt="设计师"></a></li>
+                <li><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl6/design/14.jpg" alt="设计师"></a></li>
+                <li class="five"><a href="#" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl6/design/15.jpg" alt="设计师"></a></li>
+    		</ul>
+            <div class="fl-section-content-right-chat fr">
+            	<h3>对话设计师</h3>
+            	<ul class="right-chat-list">
+                    <li class="question">
+                    	<a href="#" target="_blank">
+                        	<img class="scroll-display-img" data-img-src="img/fl/fl6/02_7.jpg" alt="主卧"/>
+                            <div class="name-description">
+                                <p class="name">林女士</p>
+                                <p class="description">12㎡榻榻米次卧，搞定老人和小孩房</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="queation-detail">
+                    	<h4><img class="scroll-display-img" data-img-src="img/fl/fl6/wenti.jpg" alt="次卧"/>空间问题</h4>
+                        <p>求次卧设计，需要榻榻米、衣柜和书桌。</p>
+                    </li>
+                    <li class="answer">
+                    	<h4><img class="scroll-display-img" data-img-src="img/fl/fl6/gantan.jpg" alt="次卧"/>空间问题</h4>
+                    	<a href="#" target="_blank">
+                        	<img class="scroll-display-img" data-img-src="img/fl/fl6/6-825_2.jpg" alt="设计师"/>
+                            <div class="name-description">
+                                <p class="name">李青青</p>
+                                <p class="description">空间较小，设计了功能强大的榻榻米床，满足休息和收纳需求。榻榻米上方设计了衣柜与吊柜，增加空间的功能性和实用性。整体空间储物性强，色调清新。</p>
+                            </div>
+                        </a>
+                        <div class="zan"><i></i>&nbsp;赞&nbsp;<span>2142</span></div>
+                    </li>
+                </ul>
+    		</div>
+    	</div>
+    </div>
+
+</div>
+
+
+<div id="activity" class="container clearfix">
+	<div class="fl-section-top">
+    	<img class="fl scroll-display-img" data-img-src="img/fl/fl7/tit_f7.jpg" alt="功能定制"/>
+    </div>
+    <div class="fl-section-content clearfix">
+    	<div class="list-content">
+            <ul class="activity-tap-list">
+                <li>
+                    <a href="" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl7/1.jpg" alt=""/></a>
+                    <span>品牌答谢会，激情不要停</span>
+                </li>
+                <li>
+                    <a href="" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl7/2.jpg" alt=""/></a>
+                    <span>花花草草总动员，春天要约惠</span>
+                </li>
+                <li class="active">
+                    <a href="" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl7/3.jpg" alt=""/></a>
+                    <span>普天“童”庆，钜惠席卷而来！</span>
+                </li>
+                <li>
+                    <a href="" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl7/4.jpg" alt=""/></a>
+                    <span>拒绝宅家!尚品美食节，约吗？</span>
+                </li>
+                <li>
+                    <a href="" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl7/5.jpg" alt=""/></a>
+                    <span>百万免单豪情 掘金新居</span>
+                </li>
+                <li >
+                    <a href="" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl7/6.jpg" alt=""/></a>
+                    <span>周六狂欢——探班“总裁密令”现场</span>
+                </li>
+                <li>
+                    <a href="" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl7/1.jpg" alt=""/></a>
+                    <span>品牌答谢会，激情不要停</span>
+                </li>
+                <li>
+                    <a href="" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl7/2.jpg" alt=""/></a>
+                    <span>花花草草总动员，春天要约惠</span>
+                </li>
+                <li>
+                    <a href="" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl7/3.jpg" alt=""/></a>
+                    <span>普天“童”庆，钜惠席卷而来！</span>
+                </li>
+                <li>
+                    <a href="" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl7/4.jpg" alt=""/></a>
+                    <span>拒绝宅家!尚品美食节，约吗？</span>
+                </li>
+                <li>
+                    <a href="" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl7/5.jpg" alt=""/></a>
+                    <span>百万免单豪情 掘金新居</span>
+                </li>
+                <li >
+                    <a href="" target="_blank"><img class="scroll-display-img" data-img-src="img/fl/fl7/6.jpg" alt=""/></a>
+                    <span>周六狂欢——探班“总裁密令”现场</span>
+                </li>
+            </ul>
+        </div>
+        <div class="button left"><</div>
+        <div class="button right">></div>
+    </div>
+
+</div>
+
+<div id="bottom-floor" class="container clearfix">
+	<div class="tap-card fl">
+    	<div id="tap-card-top" class="clearfix">
+        	<h3>我秀我家</h3>
+            <div class="list">
+                <ul>
+                    <li class="active"><a>1</a></li>
+                    <li><a>2</a></li>
+                    <li><a>3</a></li>
+                    <li><a>4</a></li>
+                </ul>
+                <a class="more" href="#" target="_blank">看看所有秀家>></a>
+            </div>
+        </div>
+        <div id="tap-card-bottom">
+            <div class="card-bottom-left fl">
+            	<div class="bottom-left-big ">
+                	<a href="#" target="_blank"><img class="bottom-img scroll-display-img" data-img-src="img/fl/fl8/1-1.jpg" alt=""/></a>
+                </div>
+                <div class="share-detail"  >
+                	<a class="love fl">喜欢<span class="number">2910</span></a>
+                    <a class="share-say fr" href="#" target="_blank">
+                    	<p class="say-detail">李工给了我很多方案参考，整个装修过程也给了我很多建议。这次一站式搞定全屋家具很省事，包括窗帘、沙发我都是在尚品宅配选的。	</p>
+                        <p class="sayer">-- 业主<span id="bottom-sayer">杨小姐</span></p>
+                    </a>
+                </div>
+            </div>
+            <div class="card-bottom-right fr">
+            	<div class="bottom-right-small ">
+                	<a href="#" target="_blank"><img class="bottom-img scroll-display-img" data-img-src="img/fl/fl8/1-2.jpg" alt=""/></a>
+                </div>
+                <div class="bottom-right-small">
+                	<a href="#" target="_blank"><img class="bottom-img scroll-display-img" data-img-src="img/fl/fl8/1-3.jpg" alt=""/></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bottom-floor-list fr">
+    	<div class="bottom-floor-content-list fl">
+        	<h3 class="list-title">关注排行榜</h3>
+            <ul class="floor-list number-one">
+            	<li><a href="#" target="_blank">整体衣柜</a></li>
+                <li class="second"><a href="#" target="_blank">榻榻米</a></li>
+                <li class="third"><a href="#" target="_blank">女孩的梦青少年房</a></li>
+                <li class="forth"><a href="#" target="_blank">首尔之缤卧房</a></li>
+                <li class="fivth"><a href="#" target="_blank">韩式田园客餐厅</a></li>
+            </ul>
+        </div>
+        <div class="bottom-floor-content-list fl to-right">
+        	<h3 class="list-title">定制百科</h3>
+            <ul class="floor-list number-two">
+            	<li><a href="#" target="_blank">两个孩子的儿童房怎样设计？</a></li>
+                <li><a href="#" target="_blank">小户型的卧房如何增加收纳?</a></li>
+                <li><a href="#" target="_blank">开放式厨房吧台设计？</a></li>
+                <li><a href="#" target="_blank">客厅与餐厅间有柱子,怎样装修好？</a></li>
+                <li><a href="#" target="_blank">飘窗如何设计成书桌，又实用又好看？</a></li>
+            </ul>
+        </div>
+        <div class="bottom-floor-content-list fl">
+        	<h3 class="list-title">常见问题</h3>
+            <ul class="floor-list number-bottom">
+            	<li><a href="#" target="_blank">不量尺直接发户型图设计可以吗？</a></li>
+                <li><a href="#" target="_blank">买家具为什么要上门量尺定制？</a></li>
+                <li><a href="#" target="_blank">买家具选择板式还是实木好？</a></li>
+                <li><a href="#" target="_blank">你们的家具环保吗？</a></li>
+                <li><a href="#" target="_blank">还没装修先定家具是不是早了点？</a></li>
+            </ul>
+        </div>
+        <div class="bottom-floor-content-list fl to-right">
+        	<h3 class="list-title">热搜关键词</h3>
+            <ul class="floor-list number-bottom">
+            	<li><a href="#" target="_blank">玩转榻榻米 让书房空间升级</a></li>
+                <li><a href="#" target="_blank">巧选衣柜利落你的储物空间</a></li>
+                <li><a href="#" target="_blank">飘窗改书桌的华丽变身</a></li>
+                <li><a href="#" target="_blank">厨房收纳技巧，空间0浪费</a></li>
+                <li><a href="#" target="_blank">客厅与餐厅的风水问题</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<div id="bottom">
+	<div id="bottom-free" class="container clearfix">
+    	<ul class="free-list">
+        	<li class="first">
+            	<i class="free-list-icon"></i>
+                <p class="free-list-detail"><strong>免费</strong><span>上门量房</span></p>
+            </li>
+            <li class="free-link big">
+            	<a href="#" target="_blank">
+                    <i class="free-list-icon"></i>
+                    <p class="free-list-detail"><strong>免费</strong><span>全屋家具设计</span></p>
+                </a>
+            </li>
+            <li class="free-link big">
+            	<a href="#" target="_blank">
+                    <i class="free-list-icon"></i>
+                    <p class="free-list-detail"><strong>免费</strong><span>家具摆放效果</span></p>
+                </a>
+            </li>
+            <li>
+            	<i class="free-list-icon"></i>
+                <p class="free-list-detail"><strong>免费</strong><span>上门安装</span></p>
+            </li>
+            <li class="big last">
+            	<i class="free-list-icon"></i>
+                <p class="free-list-detail"><strong>免费</strong><span>保修，维护终身</span></p>
+            </li>
+        </ul>
+    </div>
+    <div id="bottom-center" class="container clearfix">
+    	<div class="list-content list">
+        	<h3>新手上路</h3>
+        	<ul>
+            	<li><a href="#" target="_blank">量尺送200元</a></li>
+                <li><a href="#" target="_blank">注册新用户</a></li>
+                <li><a href="#" target="_blank">了解产品工艺</a></li>
+                <li><a href="#" target="_blank">服务流程</a></li>
+                <li><a href="#" target="_blank">常见问题解答</a></li>
+            </ul>
+        </div>
+        <div class="list-content list">
+        	<h3>量房设计</h3>
+        	<ul>
+            	<li><a href="#" target="_blank">免费上门量尺设计</a></li>
+                <li><a href="#" target="_blank">电话预约</a></li>
+                <li><a href="#" target="_blank">在线咨询预约</a></li>
+                <li><a href="#" target="_blank">网络申请</a></li>
+            </ul>
+        </div>
+        <div class="list-content list wx">
+        	<img src="img/fl/footer/wx.jpg" alt=""/>
+        	<p>扫微信获10000套家居设计案例 </p>
+        	
+        </div>
+        <div class="list-content list">
+        	<h3>安全保障</h3>
+        	<ul>
+            	<li><a href="#" target="_blank">全国配送中心</a></li>
+                <li><a href="#" target="_blank">售后服务</a></li>
+            </ul>
+        </div>
+        <div class="list-content list">
+        	<h3>招商加盟</h3>
+        	<ul>
+            	<li><a href="#" target="_blank">品牌实力</a></li>
+                <li><a href="#" target="_blank">互联网+模式</a></li>
+                <li><a href="#" target="_blank">加盟模式</a></li>
+                <li><a href="#" target="_blank">招商咨询</a></li>
+            </ul>
+        </div>
+        <div class="list-content list call-me">
+        	<h3>联系我们</h3>
+        	<ul>
+            	<li class="phone"><p class="big-font">400-880-9985</p><p>7*24小时服务热线</p></li>
+                <li class="inline"><a class="big-font" href="#" target="_blank">在线咨询</a><p>7*24小时热线</p></li>
+            </ul>
+        </div>
+    
+    
+    </div>
+    <div id="bottom-link" class="container clearfix">
+    	<div class="bottom-link-tap">
+        	<ul>
+            	<li class="active-li">
+                	<a class="link-list" href="#">友情链接</a>
+                    <div class="link-content active" >
+                    	 <a href="#" target="_blank">网易家居</a><a href="#" target="_blank">装修图满多</a><a href="#" target="_blank">软件下载</a>
+                         <a href="#" target="_blank">室内设计</a><a href="#" target="_blank">华东在线</a><a href="#" target="_blank">建材资讯</a>
+                         <a href="#" target="_blank">装修网</a><a href="#" target="_blank">猪八戒网</a><a href="#" target="_blank">中国采招网</a>
+                         <a href="#" target="_blank">电商新闻</a><a href="#" target="_blank">中商情报网</a><a href="#" target="_blank">装修网</a>
+                         <a href="#" target="_blank">装修网</a><a href="#" target="_blank">建材</a><a href="#" target="_blank">买房网</a>
+                         <a href="#" target="_blank">工程造价</a><a href="#" target="_blank">家居商城</a><a href="#">名鞋库</a>
+                         <a href="#" target="_blank">定制家具</a><a href="#" target="_blank">卫浴网</a><a href="#" target="_blank">千里马招标网</a>
+                         <a href="#" target="_blank">华为商城</a><a href="#" target="_blank">淘鞋网</a><a href="#" target="_blank">家居</a>
+                         <a href="#" target="_blank">折800</a><a href="#" target="_blank">装修设计</a><a href="#" target="_blank">上海房产网</a>
+                         <a href="#" target="_blank">我图网设计</a><a href="#" target="_blank">智房旅游地产</a><a href="#" target="_blank">亿房网</a>
+                         <a href="#" target="_blank">中国招标网</a><a href="#" target="_blank">高铁时刻表</a><a href="#" target="_blank">吉和网</a>
+                         <a href="#" target="_blank">装修效果图</a><a href="#" target="_blank">家居在线</a><a href="#" target="_blank">建筑</a>
+                         <a href="#" target="_blank">装修网</a><a href="#" target="_blank">装修设计网</a> 
+                    </div>
+                </li>
+                <li>
+                	<a class="link-list" href="#">合作网站</a>
+                    <div class="link-content">
+                    	 <a href="#" target="_blank">中国物通网</a><a href="#" target="_blank">海外房产</a><a href="#" target="_blank">天气预报查询</a>
+                         <a href="#" target="_blank">温州</a><a href="#" target="_blank">广告买卖网</a><a href="#" target="_blank">贷款</a>
+                         <a href="#" target="_blank">搜了网</a><a href="#" target="_blank">加盟网</a><a href="#" target="_blank">淘翠网</a>
+                         <a href="#" target="_blank">服装批发</a><a href="#" target="_blank">播视网视频</a><a href="#" target="_blank">上海有色金属网</a>
+                         <a href="#" target="_blank">加盟</a><a href="#" target="_blank">华夏收藏网</a><a href="#" target="_blank">亿商网</a>
+                         <a href="#" target="_blank">上海论坛</a><a href="#" target="_blank">奢侈品腕表</a><a href="#">福州二手房</a>
+                         <a href="#" target="_blank">招商加盟网</a><a href="#" target="_blank">汽车口碑</a><a href="#" target="_blank">图片下载</a>
+                    </div>
+                </li>
+                <li>
+                	<a class="link-list" href="#">热门推荐</a>
+                    <div class="link-content">
+                        <a href="#" target="_blank">家具设计</a><a href="#" target="_blank">装修图</a><a href="#" target="_blank">整体厨房</a>
+                        <a href="#" target="_blank">餐厅装修</a><a href="#" target="_blank">客厅装修效果图</a><a href="#" target="_blank">家居装饰网</a>
+                        <a href="#" target="_blank">家居建材网</a><a href="#" target="_blank">儿童房布置</a><a href="#" target="_blank">客厅家具</a>
+                        <a href="#" target="_blank">餐厅效果图</a><a href="#" target="_blank">整体橱柜</a><a href="#" target="_blank">整体衣柜图片</a>
+                        <a href="#" target="_blank">餐厅家具</a><a href="#" target="_blank">卧室装修效果图</a><a href="#" target="_blank">书房</a>
+                        <a href="#" target="_blank">儿童房</a><a href="#" target="_blank">书房家具</a><a href="#" target="_blank">家居装修效果图</a>
+                        <a href="#" target="_blank">衣柜</a><a href="#" target="_blank">家具品牌排行榜</a><a href="#" target="_blank">厨房设计图</a>
+                        <a href="#" target="_blank">电视柜</a><a href="#" target="_blank">儿童房设计</a><a href="#" target="_blank">书房设计</a> 
+                        <a href="#" target="_blank">卧室装修效果图大全</a><a href="" target="_blank">家居设计</a><a href="#" target="_blank">电视柜</a>
+                        <a href="#" target="_blank">衣柜</a><a href="#" target="_blank">整体橱柜</a><a href="#" target="_blank">床</a>
+                        <a href="#" target="_blank">装修效果图</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    
+    
+    
+    </div>
+</div>
+
+<div id="footer">
+	<div class="container clearfix">
+    	<div class="footer-nav">
+        	<a target="_blank" href="#">家饰频道</a><a target="_blank" href="#">建材频道</a><a target="_blank" href="#">装修频道</a>
+			<a target="_blank" href="#">家具图片</a><a target="_blank" href="#">定制攻略</a><a target="_blank" href="#">图片频道</a>
+			<a target="_blank" href="#">风格定制</a><a target="_blank" href="#">组合定制</a><a target="_blank" href="#">空间定制</a>
+			<a target="_blank" href="#">新品套餐</a><br>
+			<a target="_blank" href="#" >关于我们</a><a target="_blank" href="#">网站地图</a><a target="_blank" href="#">联络我们</a> 
+			<a target="_blank" href="#" >帮助中心</a><a target="_blank" href="#" >友情链接</a><a target="_blank" href="#">媒体播报</a> | 
+			<a target="_blank" href="#">新居社区</a><a target="_blank" href="#" >责任声明</a><a target="_blank" href="#" >诚聘英才</a>
+        </div>
+        <p class="copyright">2000-2016 ©&nbsp;&nbsp;广州新居网家居科技有限公司&nbsp;&nbsp;版权所有</p>
+        <p class="station">
+        	<span>经营许可证编号: 粤B2-20060312 &nbsp;&nbsp 备案号:</span>
+            <a href="#" target="_blank">粤ICP备08001346号&nbsp;&nbsp</a>
+            <i><img src="img/fl/footer/galogo.png"/></i>
+            <a href="#" target="_blank">公安部备案号：44010402000180 &nbsp;&nbsp</a>
+            <a href="#" target="_blank">站长统计</a>
+        </p>
+    
+    </div>
+</div>
+
+
+
+<div id="aside" class="clearfix">
+	<ul class="aside-list">
+    	<li><span>在线咨询</span></li>
+        <li><span>售后咨询</span></li>
+        <li><span>近期活动</span></li>
+        <li><span>返回顶部</span></li>
+    </ul>
+</div>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/html5shiv.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+
+
+
+</body>
+</html>
